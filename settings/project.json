@@ -15,8 +15,6 @@
   "design-resolution-width": 750,
   "excluded-modules": [
     "Canvas Renderer",
-    "Renderer Texture",
-    "Dynamic Atlas",
     "Mask",
     "Graphics",
     "ParticleSystem",

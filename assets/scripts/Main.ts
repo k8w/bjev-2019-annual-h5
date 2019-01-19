@@ -30,7 +30,12 @@ export default class Main extends cc.Component {
     showResult = async (name: string, date: Date) => {
         let minYear = TextConfig.min(v => parseInt(v.year))!;
         let maxYear = TextConfig.max(v => parseInt(v.year))!;
-        let year = Math.max(Math.min(date.getFullYear(), maxYear), minYear) + '';
+        let numYear = date.getFullYear();
+        if (numYear < minYear || numYear > maxYear) {
+            alert('入职时间填写错误');
+            return;
+        }
+        let year = numYear + '';
 
         let config = TextConfig.find(v => v.year == year);
         if (!config) {

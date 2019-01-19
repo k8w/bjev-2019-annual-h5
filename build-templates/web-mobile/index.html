@@ -108,9 +108,9 @@
 
   <div id="input" style="display: none">
     <p>请输入姓名</p>
-    <input type="text" id="name" />
+    <input type="text" id="name" value="蓝小鲸" />
     <p>请选择入职时间</p>
-    <input type="date" id="date" />
+    <input type="date" id="date" value="2019-01-01" />
     <button id="btnView" onclick="onBtnView()">立即查看</button>
   </div>
 
@@ -144,6 +144,7 @@
 
   <script>
     function onBtnView() {
+      window.scrollTo(0, 0);
       var name = document.getElementById('name').value;
       var dateStr = document.getElementById('date').value;
       if (!name) {
