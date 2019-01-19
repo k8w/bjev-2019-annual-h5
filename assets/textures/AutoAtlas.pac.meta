@@ -13,10 +13,6 @@
   "contourBleed": true,
   "paddingBleed": true,
   "filterUnused": true,
-  "platformSettings": {
-    "web": {
-      "formats": []
-    }
-  },
+  "platformSettings": {},
   "subMetas": {}
 }

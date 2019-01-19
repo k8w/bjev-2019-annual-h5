@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,body{
+            background: linear-gradient(#c90a08, #9e080b);
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+
+        #input{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #fff;
+            line-height: 1.5rem;
+        }
+        #input>*{
+            margin: 0.5rem auto;
+        }
+        #input input{
+            display: block;
+            width: 14rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            background: transparent;
+            border: solid 1px transparent;
+            border-bottom: dashed 1px #f5cd81;
+            color: #f5cd81;
+            outline: none;
+        }
+        #input input:focus{
+            border: solid 1px #f5cd81;
+        }
+        #input #btnView{
+            display: block;
+            width: 12rem;
+            height: 3.2rem;
+            line-height: 3.2rem;
+            text-align: center;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            background: linear-gradient(to bottom, #ffde9d, #e9b75c);
+            color: #ee0300;
+            border: solid 2px #bf0a08;
+            transition: all 0.2s;
+            border-radius: 0.5rem;
+            box-shadow: 0px 4px 4px rgba(0,0,0,0.17);
+            transform: scale(1);
+            outline: none;
+        }
+        #input #btnView:active{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="input">
+        <p>请输入姓名</p>
+        <input type="text" id="name" />
+        <p>请选择入职时间</p>
+        <input type="date" id="date" />
+        <button id="btnView">立即查看</button>
+    </div>
+</body>
+
+</html>

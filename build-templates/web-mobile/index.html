@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>查看你和北汽新能源的不解之缘</title>
+
+  <!--http://www.html5rocks.com/en/mobile/mobifying/-->
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1" />
+
+  <!--https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- force webkit on 360 -->
+  <meta name="renderer" content="webkit" />
+  <meta name="force-rendering" content="webkit" />
+  <!-- force edge on IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- force full screen on some browser -->
+  <meta name="full-screen" content="yes" />
+  <meta name="x5-fullscreen" content="true" />
+  <meta name="360-fullscreen" content="true" />
+
+  <!-- force screen orientation on some browser -->
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-orientation" content="portrait">
+
+  <!--fix fireball/issues/3568 -->
+  <!--<meta name="browsermode" content="application">-->
+  <meta name="x5-page-mode" content="app">
+
+  <!--<link rel="apple-touch-icon" href=".png" />-->
+  <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
+
+  <link rel="stylesheet" type="text/css" href="style-mobile.css" />
+
+  <style>
+    html,body,#splash{
+        background: linear-gradient(#c90a08, #9e080b);
+    }
+    #input{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        /* display: flex; */
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        color: #fff;
+        line-height: 1.5rem;
+    }
+    #input>*{
+        margin: 0.5rem auto;
+    }
+    #input input{
+        display: block;
+        width: 14rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+        font-size: 1.5rem;
+        background: transparent;
+        border: solid 1px transparent;
+        border-bottom: dashed 1px #f5cd81;
+        color: #f5cd81;
+        outline: none;
+    }
+    #input input:focus{
+        border: solid 1px #f5cd81;
+    }
+    #input #btnView{
+        display: block;
+        width: 12rem;
+        height: 3.2rem;
+        line-height: 3.2rem;
+        text-align: center;
+        font-size: 1.25rem;
+        margin-top: 2rem;
+        background: linear-gradient(to bottom, #ffde9d, #e9b75c);
+        color: #ee0300;
+        border: solid 2px #bf0a08;
+        transition: all 0.2s;
+        border-radius: 0.5rem;
+        box-shadow: 0px 4px 4px rgba(0,0,0,0.17);
+        transform: scale(1);
+        outline: none;
+    }
+    #input #btnView:active{
+        transform: scale(1.2);
+    }
+  </style>
+
+</head>
+
+<body>
+  <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+  <div id="splash">
+    <div class="progress-bar stripes" style="opacity: 0.5">
+      <span style="width: 0%"></span>
+    </div>
+  </div>
+
+  <div id="input" style="display: none">
+    <p>请输入姓名</p>
+    <input type="text" id="name" />
+    <p>请选择入职时间</p>
+    <input type="date" id="date" />
+    <button id="btnView" onclick="onBtnView()">立即查看</button>
+  </div>
+
+  <script src="src/settings.js" charset="utf-8"></script>
+
+  <script src="main.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    (function () {
+      // open web debugger console
+      if (typeof VConsole !== 'undefined') {
+        window.vConsole = new VConsole();
+      }
+
+      var splash = document.getElementById('splash');
+      splash.style.display = 'block';
+
+      var cocos2d = document.createElement('script');
+      cocos2d.async = true;
+      cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js';
+
+      var engineLoaded = function () {
+        document.body.removeChild(cocos2d);
+        cocos2d.removeEventListener('load', engineLoaded, false);
+        window.boot();
+      };
+      cocos2d.addEventListener('load', engineLoaded, false);
+      document.body.appendChild(cocos2d);
+    })();
+  </script>
+
+  <script>
+    function onBtnView() {
+      var name = document.getElementById('name').value;
+      var dateStr = document.getElementById('date').value;
+      if (!name) {
+        alert('请填写您的姓名');
+        return;
+      }
+      if (!dateStr) {
+        alert('请填写入职时间');
+        return;
+      }
+      var date = new Date(dateStr.replace(/-/g, '/'));
+      window.showResult(name, date);
+    }
+  </script>
+</body>
+
+</html>
