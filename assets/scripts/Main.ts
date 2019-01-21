@@ -20,6 +20,9 @@ export default class Main extends cc.Component {
     @property(cc.Label)
     keyword: cc.Label = null as any;
 
+    @property(cc.AudioClip)
+    bgm: cc.AudioClip = null as any;
+
     onLoad() {
         (window as any).showResult = this.showResult;
 
@@ -48,6 +51,8 @@ export default class Main extends cc.Component {
             v.active = false;
         })
 
+        cc.audioEngine.playMusic(this.bgm, true);
+
         this.input.active = false;
         await this._wait(200);
         this.result.active = true;
@@ -60,8 +65,8 @@ ${day}个日日夜夜`;
         this.text2.string = config.words[Math.random() * config.words.length | 0];
         this.keyword.string = `${year} ${config.keyword}`;
 
-        const gap = 2;
-        const duration = 1;
+        const gap = 2.5;
+        const duration = 1.5;
         this.result.children.forEach((v, i) => {
             v.active = true;
             v.opacity = 0;

@@ -35,7 +35,6 @@
     "EditBox",
     "VideoPlayer",
     "WebView",
-    "Audio",
     "AudioSource",
     "Animation",
     "Collider",
